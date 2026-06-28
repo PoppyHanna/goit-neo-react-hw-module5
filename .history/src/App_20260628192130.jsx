@@ -5,7 +5,7 @@ import Navigation from "./components/Navigation/Navigation"
 
 import './App.css'
 
-const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const HomePage = lazy(() => import("."));
 const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage"));
 const MovieDetailesPage = lazy(() => import("./pages/MovieDetailsPage/MovieDetailsPage"));
 const MovieCast = lazy(() => import("./components/MovieCast/MovieCast"));
