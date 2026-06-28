@@ -52,7 +52,7 @@ export default function MovieDetailsPage() {
 
     return (
         <div className={styles.btn}>
-            <Link to={backLink} className={styles.linkBtn}>
+            <Link to={backLink.current} className={styles.linkBtn}>
                 ⬅ Go back
             </Link>
            

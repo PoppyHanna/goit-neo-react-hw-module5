@@ -22,7 +22,7 @@ export default function MovieCast() {
       try {
         const data = await getMovieCredits(movieId);
         setCast(data);
-      } catch {
+      } catch (err) {
         setError("Failed to load cast.");;
       } finally {
         setIsLoading(false);

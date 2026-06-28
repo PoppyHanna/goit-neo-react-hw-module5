@@ -7,18 +7,16 @@ import { RingLoader } from "react-spinners";
 export default function HomePage() {
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchMovies = async () => {
             setIsLoading(true);
-            setError(null);
 
             try {
                 const data = await getTrendingMovies();
                 setMovies(data);
-            } catch {
-                setError("Failed to load trending movies.");
+            } catch (error) {
+                console.error(error);
             } finally {
                 setIsLoading(false)
             }
@@ -29,12 +27,8 @@ export default function HomePage() {
     return (
         <div className={styles.container}>
             <h2 className={styles.title}>Trending Movies!!!</h2>
-
-            {isLoading && <RingLoader color="#d422e3" size={60} />}
-
-            {error && <p style={{ color: "red" }}>{error}</p>}
-
-            {!isLoading && movies.length > 0 && (<MovieList movies={movies} />)};
+            
+            {movies.length > 0 && <MovieList movies={movies} />};
         </div>
     );
 }

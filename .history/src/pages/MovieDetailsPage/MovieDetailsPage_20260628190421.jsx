@@ -31,7 +31,7 @@ export default function MovieDetailsPage() {
             try {
                 const data = await getMovieDetails(movieId);
                 setMovieData(data);
-            } catch {
+            } catch (err) {
                 setError("Failed to load movie details.");
             } finally {
                 setIsLoading(false);
@@ -44,15 +44,11 @@ export default function MovieDetailsPage() {
         return <RingLoader color="#d422e3" size={60} />;
     }
 
-    if (error) {
-        return <p style={{ color: "red" }}>{error}</p>;
-    }
-
     if (!movieData) return <p>Loading...</p>
 
     return (
         <div className={styles.btn}>
-            <Link to={backLink} className={styles.linkBtn}>
+            <Link to={backLink.current} className={styles.linkBtn}>
                 ⬅ Go back
             </Link>
            

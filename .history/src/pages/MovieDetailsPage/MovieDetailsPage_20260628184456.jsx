@@ -21,18 +21,16 @@ export default function MovieDetailsPage() {
 
     const [movieData, setMovieData] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
             setIsLoading(true);
-            setError(null);
 
             try {
                 const data = await getMovieDetails(movieId);
                 setMovieData(data);
-            } catch {
-                setError("Failed to load movie details.");
+            } catch (error) {
+                console.error("Error loading movie details!", error);
             } finally {
                 setIsLoading(false);
             }
@@ -43,16 +41,15 @@ export default function MovieDetailsPage() {
     if (isLoading) {
         return <RingLoader color="#d422e3" size={60} />;
     }
-
-    if (error) {
-        return <p style={{ color: "red" }}>{error}</p>;
-    }
-
+    
     if (!movieData) return <p>Loading...</p>
 
     return (
-        <div className={styles.btn}>
-            <Link to={backLink} className={styles.linkBtn}>
+        
+        {!isLoading && movieData && (
+           <div className={styles.btn}>
+            
+            <Link to={backLink.current} className={styles.linkBtn}>
                 ⬅ Go back
             </Link>
            
@@ -79,7 +76,7 @@ export default function MovieDetailsPage() {
 
             <Outlet />
         </div> 
-        
+        )}
           
     );
 

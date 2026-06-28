@@ -20,8 +20,8 @@ export default function MovieReviews() {
       try {
         const data = await getMovieReviews(movieId);
         setReviews(data);
-      } catch {
-        setError("Failed to load reviews.");
+      } catch (error) {
+        console.error("Error loading reviews!!!", error);
       } finally {
         setIsLoading(false);
       }

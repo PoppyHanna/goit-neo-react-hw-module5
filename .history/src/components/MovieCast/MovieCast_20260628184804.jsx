@@ -11,19 +11,17 @@ export default function MovieCast() {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     // if (!movieId) return;
     const fetchCredits = async () => {
       setIsLoading(true);
-      setError(null);
 
       try {
         const data = await getMovieCredits(movieId);
         setCast(data);
-      } catch {
-        setError("Failed to load cast.");;
+      } catch (error) {
+        console.error("Error loading cast!", error);
       } finally {
         setIsLoading(false);
       }
@@ -34,10 +32,6 @@ export default function MovieCast() {
 
    if (isLoading) {
     return <RingLoader color="#d422e3" size={60} />;
-  }
-
-  if (error) {
-    return <p style={{ color: "red" }}>{error}</p>;
   }
 
   if (cast.length === 0) {

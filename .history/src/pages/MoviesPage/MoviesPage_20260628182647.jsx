@@ -8,7 +8,6 @@ import { RingLoader } from "react-spinners";
 export default function MoviesPage() {
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
     const [searchParams, setSearchParams] = useSearchParams();
     const query = searchParams.get("query") ?? "";
 
@@ -17,13 +16,12 @@ export default function MoviesPage() {
 
         const fetchMovies = async () => { 
             setIsLoading(true);
-            setError(null);
 
             try {
                 const data = await searchMovies(query);
                 setMovies(data);
-            } catch {
-                setError("Failed to load movies.");
+            } catch (error) {
+                console.error(error)
             } finally {
                 setIsLoading(false);
             }
@@ -36,15 +34,10 @@ export default function MoviesPage() {
     };
 
     return (
-        <>
+        <div>
             <SearchBar onSubmit={handleSearch} />
-
             {isLoading && <RingLoader color="#d422e3" size={60} />}
-
-            {error && <p style={{ color: "red" }}>{error}</p>}
-
-
-            {!isLoading && movies.length > 0 && (<MovieList movies={movies} />)}
-        </>
+            {!isLoading && movies.length > 0 && <MovieList movies={movies} />}
+        </div>
     );
 }

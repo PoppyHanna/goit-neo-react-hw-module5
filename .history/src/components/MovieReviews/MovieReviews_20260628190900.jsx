@@ -20,8 +20,8 @@ export default function MovieReviews() {
       try {
         const data = await getMovieReviews(movieId);
         setReviews(data);
-      } catch {
-        setError("Failed to load reviews.");
+      } catch (error) {
+        console.error("Error loading reviews!!!", error);
       } finally {
         setIsLoading(false);
       }
@@ -34,13 +34,9 @@ export default function MovieReviews() {
     return <RingLoader color="#d422e3" size={60} />;
   }
 
-  if (error) {
-    return <p style={{ color: "red" }}>{error}</p>;
-  }
-
   if (reviews.length === 0) {
-    return <p>No reviews available.</p>
-  } 
+      return <p>No reviews available.</p>
+    } 
 
   return (
     <div className={styles.reviewsContainer}>

@@ -17,7 +17,7 @@ export default function HomePage() {
             try {
                 const data = await getTrendingMovies();
                 setMovies(data);
-            } catch {
+            } catch (error) {
                 setError("Failed to load trending movies.");
             } finally {
                 setIsLoading(false)
@@ -33,7 +33,7 @@ export default function HomePage() {
             {isLoading && <RingLoader color="#d422e3" size={60} />}
 
             {error && <p style={{ color: "red" }}>{error}</p>}
-
+            
             {!isLoading && movies.length > 0 && (<MovieList movies={movies} />)};
         </div>
     );

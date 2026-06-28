@@ -22,7 +22,7 @@ export default function MovieCast() {
       try {
         const data = await getMovieCredits(movieId);
         setCast(data);
-      } catch {
+      } catch (err) {
         setError("Failed to load cast.");;
       } finally {
         setIsLoading(false);
@@ -34,10 +34,6 @@ export default function MovieCast() {
 
    if (isLoading) {
     return <RingLoader color="#d422e3" size={60} />;
-  }
-
-  if (error) {
-    return <p style={{ color: "red" }}>{error}</p>;
   }
 
   if (cast.length === 0) {

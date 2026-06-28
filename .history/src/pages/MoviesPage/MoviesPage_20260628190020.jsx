@@ -22,7 +22,7 @@ export default function MoviesPage() {
             try {
                 const data = await searchMovies(query);
                 setMovies(data);
-            } catch {
+            } catch (err) {
                 setError("Failed to load movies.");
             } finally {
                 setIsLoading(false);
