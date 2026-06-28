@@ -1,7 +1,7 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspenses } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { RingLoader } from 'react-spinners'
-import Navigation from "./components/Navigation/Navigation"
+import Navigation from "./components/Navigation"
 
 import './App.css'
 
@@ -16,18 +16,7 @@ function App() {
 
   return (
     <>
-      <Navigation /> 
-      <Suspense fallback={<RingLoader color="#d422e3" size={60} />}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/movies" element={<MoviesPage />} />
-          <Route path="/movies/:movieId" element={<MovieDetailesPage />}>
-            <Route path="cast" element={<MovieCast />} />
-            <Route path="reviews" element={<MovieReviews />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage/>} />
-        </Routes>
-      </Suspense>
+     
     </>
   )
 }

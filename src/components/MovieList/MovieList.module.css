@@ -1,0 +1,42 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.listItem {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-bottom: 2px solid #eee;
+}
+
+.movieName {
+  padding: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  background-color: #f8f8f8;
+  margin: 0;
+}
+
+.listItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.listItem:hover .movieName {
+  color: #646cff;
+}
