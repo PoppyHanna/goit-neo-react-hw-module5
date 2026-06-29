@@ -14,7 +14,7 @@ export default function MovieCast() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    
+    if (!movieId) return;
     const fetchCredits = async () => {
       setIsLoading(true);
       setError(null);
@@ -32,40 +32,37 @@ export default function MovieCast() {
     fetchCredits();
   }, [movieId]);
 
+   if (isLoading) {
+    return <RingLoader color="#d422e3" size={60} />;
+  }
+
+  if (error) {
+    return <p style={{ color: "red" }}>{error}</p>;
+  }
+
+  if (cast.length === 0) {
+    return <p className={styles.title}>Actors not found.</p>
+  }
+
   return (
+
     <div className={styles.container}>
-
-      {isLoading && (
-        <div className={styles.loader}>
-          <RingLoader color="#d422e3" size={60} />
-        </div>
-      )}
-
-      {error && <p className={styles.error}>{error}</p>}
-
-      {!isLoading && !error && cast.length === 0 && (
-        <p className={styles.empty}>Actors not found.</p>
-      )}
-
-      {!isLoading && !error && cast.length > 0 && (
-        <>
-          {cast.map((actor) => (
-            <div key={actor.id} className={styles.info}>
-              <img
-                src={
-                  actor.profile_path
-                    ? `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
-                    : defaultActorImg
-                }
-                alt={actor.name}
-                width={150}
-                className={styles.img}
-              />
-              <p className={styles.title}>{actor.name}</p>
-            </div>
-          ))}
-        </>
-      )}
+      {cast.map((actor) => (
+          <div key={actor.id} className={styles.info}>
+            <img
+              src={
+                actor.profile_path
+                  ? `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
+                  : defaultActorImg
+              }
+              alt={actor.name}
+              width={150}
+              className={styles.img}
+            />
+            <p className={styles.title}>{actor.name}</p>
+          </div>
+       ))
+      }
     </div>
   );
 }

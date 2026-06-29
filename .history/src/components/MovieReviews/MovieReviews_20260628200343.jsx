@@ -11,6 +11,7 @@ export default function MovieReviews() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // if (!movieId) return;
 
     const fetchReviews = async () => {
       setIsLoading(true);
@@ -28,6 +29,18 @@ export default function MovieReviews() {
 
     fetchReviews();
   }, [movieId]);
+
+  // if (isLoading) {
+  //   return <RingLoader color="#d422e3" size={60} />;
+  // }
+
+  // if (error) {
+  //   return <p className={styles.error}>{error}</p>;
+  // }
+
+  // if (reviews.length === 0) {
+  //   return <p className={styles.empty}>No reviews available.</p>
+  // } 
 
   return (
     <div className={styles.reviewsContainer}>

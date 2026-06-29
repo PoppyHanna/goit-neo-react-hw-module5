@@ -46,7 +46,7 @@ export default function MoviesPage() {
                 </div>
             )}
 
-            {error && <p className={styles.error}>{error}</p>}
+            {error && <p className="error">{error}</p>}
 
 
             {!isLoading && movies.length > 0 && (<MovieList movies={movies} />)}

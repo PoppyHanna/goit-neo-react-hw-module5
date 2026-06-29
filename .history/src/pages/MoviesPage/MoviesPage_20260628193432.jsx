@@ -4,7 +4,6 @@ import { searchMovies } from "../../moviesService.js";
 import MovieList from "../../components/MovieList/MovieList";
 import { useSearchParams } from "react-router-dom";
 import { RingLoader } from "react-spinners";
-import styles from "./MoviesPage.module.css"
 
 export default function MoviesPage() {
     const [movies, setMovies] = useState([]);
@@ -40,13 +39,9 @@ export default function MoviesPage() {
         <>
             <SearchBar onSubmit={handleSearch} />
 
-            {isLoading && (
-                <div className={styles.loader}>
-                <RingLoader color="#d422e3" size={60} />
-                </div>
-            )}
+            {isLoading && <RingLoader color="#d422e3" size={60} />}
 
-            {error && <p className={styles.error}>{error}</p>}
+            {error && <p className="error">{error}</p>}
 
 
             {!isLoading && movies.length > 0 && (<MovieList movies={movies} />)}

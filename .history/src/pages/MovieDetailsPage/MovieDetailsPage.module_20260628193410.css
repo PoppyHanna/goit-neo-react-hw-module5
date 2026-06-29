@@ -77,19 +77,6 @@ img {
   background: linear-gradient(to top left, #86d7f0 0%, #e37bba 100%);
 }
 
-.loader {
-  position: absolute;
-  inset: 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(2px);
-  z-index: 10;
-}
-
 .error {
   margin: 20px auto;
   padding: 12px 18px;

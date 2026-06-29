@@ -14,7 +14,7 @@ export default function MovieCast() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    
+    // if (!movieId) return;
     const fetchCredits = async () => {
       setIsLoading(true);
       setError(null);
@@ -35,18 +35,22 @@ export default function MovieCast() {
   return (
     <div className={styles.container}>
 
+      {/* LOADER OVERLAY */}
       {isLoading && (
         <div className={styles.loader}>
           <RingLoader color="#d422e3" size={60} />
         </div>
       )}
 
+      {/* ERROR */}
       {error && <p className={styles.error}>{error}</p>}
 
+      {/* EMPTY STATE */}
       {!isLoading && !error && cast.length === 0 && (
         <p className={styles.empty}>Actors not found.</p>
       )}
 
+      {/* CONTENT */}
       {!isLoading && !error && cast.length > 0 && (
         <>
           {cast.map((actor) => (

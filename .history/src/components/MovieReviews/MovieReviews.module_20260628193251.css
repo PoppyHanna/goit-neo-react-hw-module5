@@ -1,23 +1,33 @@
-.loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  min-height: 200px;
+.reviewsContainer {
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  margin-top: 20px;
 }
 
-.title {
-  display: flex;
+.review {
+  background-color: #fff;
   padding: 15px;
-  font-size: 52px;
-  text-shadow: 6px 6px 8px #e0fffd;
-  background-image: linear-gradient(120deg, #6495ed 30%, #ff69b4);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  justify-content: center;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.author {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.content {
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+.date {
+  font-size: 0.9em;
+  color: #888;
+  text-align: right;
+}
 
 .error {
   margin: 20px auto;

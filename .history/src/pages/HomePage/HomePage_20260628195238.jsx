@@ -30,10 +30,9 @@ export default function HomePage() {
         <div className={styles.container}>
             <h2 className={styles.title}>Trending Movies!!!</h2>
 
-            {isLoading && (
-                <div className={styles.loader}>
-                    <RingLoader color="#d422e3" size={60} />
-                </div>)}
+            {isLoading && (<div className={styles.loader}>
+                            <RingLoader color="#d422e3" size={60} />
+                          </div>)}
 
             {error && <p className={styles.error}>{error}</p>}
 

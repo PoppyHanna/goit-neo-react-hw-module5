@@ -14,7 +14,7 @@ export default function MovieCast() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    
+    // if (!movieId) return;
     const fetchCredits = async () => {
       setIsLoading(true);
       setError(null);

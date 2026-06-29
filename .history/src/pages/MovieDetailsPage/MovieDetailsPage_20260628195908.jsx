@@ -40,45 +40,54 @@ export default function MovieDetailsPage() {
         fetchMovieDetails();
     }, [movieId]);
 
+    // if (isLoading) {
+    //     return (
+    //         <div className={styles.loader}>
+    //         <RingLoader color="#d422e3" size={60} />
+    //         </div>
+    //     );
+    // }
+
+    // if (error) {
+    //     return <p className={styles.error}>{error}</p>;
+    // }
+
     return (
         <div className={styles.btn}>
             {isLoading && (
-                <div className={styles.loader}>
-                    <RingLoader color="#d422e3" size={60} />
-                </div>
-            )}
-
+        <div className={styles.loader}>
+          <RingLoader color="#d422e3" size={60} />
+        </div>
+      )}
             {error && <p className={styles.error}>{error}</p>}
 
-            {movieData && !isLoading && !error && (
-                <>
-                    <Link to={backLink} className={styles.linkBtn}>
-                        ⬅ Go back
-                    </Link>
-                
-                    <h2 className={styles.title}>{movieData.title}</h2>
-                    <img
-                        src={
-                        movieData.poster_path
-                            ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}`
-                            : defaultImg
-                        }
-                        width={250}
-                        alt={movieData.title}
-                    />
-                    <p className={styles.textWhite}>{movieData.overview}</p>
+            {(
+                <Link to={backLink} className={styles.linkBtn}>
+                ⬅ Go back
+            </Link>
+           
+            <h2 className={styles.title}>{movieData.title}</h2>
+            <img
+                src={
+                movieData.poster_path
+                    ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}`
+                    : defaultImg
+                }
+                width={250}
+                alt={movieData.title}
+            />
+            <p className={styles.textWhite}>{movieData.overview}</p>
 
-                    <div className={styles.nav}>
-                        <NavLink to="cast" className={styles.link}>
-                        Cast
-                        </NavLink>
-                        <NavLink to="reviews" className={styles.link}>
-                        Reviews
-                        </NavLink>
-                    </div>
+            <div className={styles.nav}>
+                <NavLink to="cast" className={styles.link}>
+                Cast
+                </NavLink>
+                <NavLink to="reviews" className={styles.link}>
+                Reviews
+                </NavLink>
+            </div>
 
-                    <Outlet />
-                </>
+            <Outlet />
             )}
         </div> 
         

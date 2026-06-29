@@ -40,6 +40,18 @@ export default function MovieDetailsPage() {
         fetchMovieDetails();
     }, [movieId]);
 
+    // if (isLoading) {
+    //     return (
+    //         <div className={styles.loader}>
+    //         <RingLoader color="#d422e3" size={60} />
+    //         </div>
+    //     );
+    // }
+
+    // if (error) {
+    //     return <p className={styles.error}>{error}</p>;
+    // }
+
     return (
         <div className={styles.btn}>
             {isLoading && (
@@ -52,7 +64,7 @@ export default function MovieDetailsPage() {
 
             {movieData && !isLoading && !error && (
                 <>
-                    <Link to={backLink} className={styles.linkBtn}>
+                        <Link to={backLink} className={styles.linkBtn}>
                         ⬅ Go back
                     </Link>
                 
@@ -77,7 +89,7 @@ export default function MovieDetailsPage() {
                         </NavLink>
                     </div>
 
-                    <Outlet />
+                            <Outlet />
                 </>
             )}
         </div> 

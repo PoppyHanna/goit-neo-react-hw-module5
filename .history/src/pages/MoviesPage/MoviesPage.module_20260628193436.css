@@ -1,24 +1,3 @@
-.loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  min-height: 200px;
-}
-
-.title {
-  display: flex;
-  padding: 15px;
-  font-size: 52px;
-  text-shadow: 6px 6px 8px #e0fffd;
-  background-image: linear-gradient(120deg, #6495ed 30%, #ff69b4);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  justify-content: center;
-}
-
-
 .error {
   margin: 20px auto;
   padding: 12px 18px;
